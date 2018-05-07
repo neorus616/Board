@@ -39,6 +39,7 @@ Board& Board::operator=(char const & input){
 }
 
 Board Board::operator=(Board const & input){
+    this->~Board();
     size = input.size;
     board = new Cell*[input.size];
     for(int i = 0; i < input.size; i++){
