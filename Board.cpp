@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Board.h"
+using namespace std;
 
 
 
@@ -13,6 +14,15 @@ Board::Board(int size){
             board[i][j] = '.';
     }
 }
+
+char& Board::operator[](list<int> coor){
+    if(coor.size() != 2)
+        throw "wrong input";
+	int a = coor.front();
+	int b = coor.back();
+		return this->board[a][b];
+}
+
 
 ostream& operator << (ostream& os, Board const & board){
     for(int i = 0 ; i < board.size ; i++)
