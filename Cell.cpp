@@ -25,6 +25,10 @@ Cell Cell::operator = (const Cell & input){
     return *this;
 }
 
+bool operator == (Cell const & l, char const & r){
+    return l.pox == r;
+}
+
 Cell::operator char(){
     return pox;
 }
