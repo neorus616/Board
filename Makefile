@@ -1,5 +1,5 @@
 CXX=clang++-5.0
-CXXFLAGS=-std=c++11
+CXXFLAGS=-std=c++14
 
 all: a.out
 	./a.out
