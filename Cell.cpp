@@ -14,16 +14,23 @@ Cell::Cell(const char & input){
 }
 
 Cell& Cell::operator = (const char & input){
-    if(input != 'X' && input != 'O')
+    if(input != 'X' && input != 'O' && input != '.')
         throw IllegalCharException(input);
     this->pox = input;
     return *this;
 }
 
-char Cell::getpox(){
+Cell Cell::operator = (const Cell & input){
+    this->pox = input.pox;
+    return *this;
+}
+
+Cell::operator char(){
     return pox;
 }
 
-ostream& operator << (ostream & os, Cell  & c){
-    return os << c.getpox();
+ostream& operator << (ostream & os, Cell const & c){
+    return os << c.pox;
 }
+
+Cell::~Cell(){}

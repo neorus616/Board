@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+
+using namespace std;
 
 class Cell{
     private:
@@ -8,9 +11,10 @@ class Cell{
         Cell();
         Cell(const char &);
         Cell& operator = (const char &);
-        char getpox();
+        Cell operator = (const Cell & input);
+        operator char();
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-        friend ostream& operator << (ostream &, Cell &);
+        friend ostream& operator << (ostream &, Cell const &);
 
         ~Cell();
 };

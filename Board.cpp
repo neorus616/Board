@@ -16,20 +16,33 @@ Board::Board(int size){
     board = new Cell*[size];
     for(int i = 0; i < size; i++){
         board[i] = new Cell[size];
-        for(int j = 0 ; j < size ; j++);
-            // board[i][j] = '.';
     }
 }
 
 Board::Board(const Board & cp){
-    Board tmp;
-    tmp.size = cp.size;
-    tmp.board = new Cell*[cp.size];
+    size = cp.size;
+    board = new Cell*[cp.size];
     for(int i = 0; i < cp.size; i++){
-        tmp.board[i] = new Cell[size];
+        board[i] = new Cell[size];
         for(int j = 0 ; j < cp.size ; j++)
-            tmp[{i,j}] = cp[{i,j}];
+            (*this)[{i,j}] = cp[{i,j}];
     }
+}
+
+Board& Board::operator=(char const & input){
+    if(input != '.')
+        throw IllegalCharException(input);
+    for(int i = 0; i < size; i++)
+        for(int j = 0 ; j < size ; j++)
+            (*this)[{i,j}] = '.';
+    return *this;
+}
+
+Board Board::operator=(Board const & input){
+    for(int i = 0; i < size; i++)
+        for(int j = 0 ; j < size ; j++)
+            (*this)[{i,j}] = input[{i,j}];
+    return *this;
 }
 
 Cell& Board::operator[](list<int> coor){

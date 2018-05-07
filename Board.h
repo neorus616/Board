@@ -14,6 +14,8 @@ class Board{
         Board();
         Board(const Board & cp);
         Board(int);
+        Board& operator=(char const &);
+        Board operator=(Board const & input);
         Cell& operator[](list<int>);
         const Cell& operator[](list<int>) const;
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
