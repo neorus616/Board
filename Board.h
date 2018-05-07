@@ -2,19 +2,20 @@
 #include <iostream>
 #include <list>
 #include <string>
+#include "Cell.h"
 using namespace std;
 
 class Board{
     private:
         int size;
-        char** board;
+        Cell** board;
        
     public:
         Board();
         Board(const Board & cp);
         Board(int);
-        char& operator[](list<int>);
-        const char& operator[](list<int>) const;
+        Cell& operator[](list<int>);
+        const Cell& operator[](list<int>) const;
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
         friend ostream& operator << (ostream &, Board const &);
         friend istream& operator >> (istream & ,Board &);
@@ -31,15 +32,5 @@ struct IllegalCoordinateException : public exception {
     const string theCoordinate() const throw () {
         string s = to_string(a) + "," + to_string(b);
         return s;
-   }
-};
-
-struct IllegalCharException : public exception {
-    char a;
-    IllegalCharException(char x){
-        a = x;
-    }
-    const char theChar() const throw () {
-        return a;
    }
 };
