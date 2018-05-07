@@ -42,11 +42,11 @@ int main() {
 // 		cout << "Illegal char: " << ex.theChar() << endl;  // "Illegal char: x"
 // 	}
 
-// 	Board board2 = board1;
-// 	board2[{0,0}] = 'X';
+	Board board2 = board1;
+	board2[{0,0}] = 'X';
 // 	cout << board1 << endl;  /* Shows an empty board, as above */
 // 	cout << board2 << endl;  /* Shows a board with an X at top-left */
-
+	
 // 	board1 = board2;
 // 	board1[{3,3}] = 'O';
 // 	cout << board2 << endl;  /* Shows a board with an X at top-left */
