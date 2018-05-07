@@ -66,7 +66,6 @@ ostream& operator << (ostream & os, Board const & board){
         for(int j = 0 ; j < board.size ; j++){
             os << board.board[i][j];
         }
-        if(i != board.size-1)
         os << endl;
     }
     return os;
