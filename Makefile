@@ -4,11 +4,8 @@ CXXFLAGS=-std=c++11
 all: a.out
 	./a.out
 
-a.out: Cell.o Board.o main.o
-	$(CXX) $(CXXFLAGS) Cell.o Board.o main.o
-
-main.o: main.cpp Board.o
-	$(CXX) $(CXXFLAGS) --compile main.cpp -o main.o
+a.out: Cell.o Board.o
+	$(CXX) $(CXXFLAGS) Cell.o Board.o
 
 Board.o: Board.cpp Board.h Cell.h
 	$(CXX) $(CXXFLAGS) --compile Board.cpp -o Board.o
