@@ -4,24 +4,14 @@
 #include "Board.h"
 using namespace std;
 
-struct IllegalCoordinateException : public exception {
-   const char * theCoordinate(int x, int y) const throw () {
-      return x + "," + y;
-   }
-};
-
-struct IllegalCharException : public exception {
-   const char theChar(char a) const throw () {
-      return a;
-   }
-};
-
 Board::Board(){
     this->size = 0;
     this->board = nullptr;
 }
 
 Board::Board(int size){
+    if(size < 0)
+        size *= -1; 
     this->size = size;
     board = new char*[size];
     for(int i = 0; i < size; i++){
@@ -43,16 +33,16 @@ Board::Board(const Board & cp){
 }
 
 char& Board::operator[](list<int> coor){
-    if(coor.size() != 2)
-        throw "wrong input";
+    if(coor.size() != 2 || coor.front() > size-1 || coor.back() > size-1 || coor.front() < 0 || coor.back() < 0)
+        throw IllegalCoordinateException(coor.front(),coor.back());
 	int a = coor.front();
 	int b = coor.back();
 		return this->board[a][b];
 }
 
 const char& Board::operator[](list<int> coor) const{
-    if(coor.size() != 2)
-        throw "wrong input";
+    if(coor.size() != 2 || coor.front() > size-1 || coor.back() > size-1 || coor.front() < 0 || coor.back() < 0)
+        throw IllegalCoordinateException(coor.front(),coor.back());
 	int a = coor.front();
 	int b = coor.back();
 		return this->board[a][b];
