@@ -1,7 +1,7 @@
 CXX=clang++-5.0
-CXXFLAGS=-std=c++11
+CXXFLAGS=-std=c++14
 
-all: Board.o
+all: Board.o Cell.o
 
 Board.o: Board.cpp Board.h Cell.h
 	$(CXX) $(CXXFLAGS) --compile Board.cpp -o Board.o
