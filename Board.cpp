@@ -39,9 +39,13 @@ Board& Board::operator=(char const & input){
 }
 
 Board Board::operator=(Board const & input){
-    for(int i = 0; i < size; i++)
-        for(int j = 0 ; j < size ; j++)
+    size = input.size;
+    board = new Cell*[input.size];
+    for(int i = 0; i < input.size; i++){
+        board[i] = new Cell[size];
+        for(int j = 0 ; j < input.size ; j++)
             (*this)[{i,j}] = input[{i,j}];
+    }
     return *this;
 }
 
@@ -66,7 +70,6 @@ ostream& operator << (ostream & os, Board const & board){
         for(int j = 0 ; j < board.size ; j++){
             os << board.board[i][j];
         }
-        if(i != board.size-1)
         os << endl;
     }
     return os;
