@@ -5,11 +5,10 @@ using namespace std;
 
 class Board{
     private:
-        
+        int size;
         char** board;
        
     public:
-        int size;
         Board(int);
         char& operator[](list<int>);
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//

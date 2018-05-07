@@ -1,9 +1,20 @@
 #include <iostream>
 #include <string>
+#include <exception>
 #include "Board.h"
 using namespace std;
 
+struct IllegalCoordinateException : public exception {
+   const char * theCoordinate(int x, int y) const throw () {
+      return x + "," + y;
+   }
+};
 
+struct IllegalCharException : public exception {
+   const char theChar(char a) const throw () {
+      return a;
+   }
+};
 
 Board::Board(int size){
     this->size = size;
@@ -23,7 +34,6 @@ char& Board::operator[](list<int> coor){
 		return this->board[a][b];
 }
 
-
 ostream& operator << (ostream& os, Board const & board){
     for(int i = 0 ; i < board.size ; i++)
         for(int j = 0 ; j < board.size ; j++){
@@ -33,6 +43,5 @@ ostream& operator << (ostream& os, Board const & board){
         }
     return os;
 }
-
 
 Board::~Board(){}
