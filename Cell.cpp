@@ -9,7 +9,8 @@ Cell::Cell(){
 }
 
 Cell::Cell(const char & input){
-    throw IllegalCharException(input);
+    if(input != 'X' && input != 'O' && input != '.')
+        throw IllegalCharException(input);
     pox = input;
 }
 
