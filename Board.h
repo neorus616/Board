@@ -21,7 +21,7 @@ class Board{
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
         friend ostream& operator << (ostream &, Board const &);
         friend istream& operator >> (istream & ,Board &);
-        free();
+        //free();
         ~Board();
 };
 
