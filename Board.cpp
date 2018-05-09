@@ -1,3 +1,5 @@
+/*Author: Kostia and Yogev */
+
 #include <iostream>
 #include <string>
 #include <exception>
@@ -85,3 +87,6 @@ ostream& operator << (ostream & os, Board const & board){
 Board::~Board(){
     this->free();
 }
+
+
+/*Author: Kostia and Yogev */
