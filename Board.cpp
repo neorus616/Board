@@ -29,10 +29,10 @@ Board::Board(const Board & cp){
     }
 }
 
-void free(Board & input){
-    for(int i = 0; i < input.size; i++)
-        delete[] input.board[i];
-    delete[] input.board;
+void Board::free(){
+    for(int i = 0; i < size; i++)
+        delete[] board[i];
+    delete[] board;
 }
 
 Board& Board::operator=(char const & input){
@@ -45,7 +45,7 @@ Board& Board::operator=(char const & input){
 }
 
 Board Board::operator=(Board const & input){
-    free(*this);
+    this->free();
     size = input.size;
     board = new Cell*[input.size];
     for(int i = 0; i < input.size; i++){
@@ -83,5 +83,5 @@ ostream& operator << (ostream & os, Board const & board){
 }
 
 Board::~Board(){
-    free(*this);
+    this->free();
 }
