@@ -2,7 +2,7 @@ CXX=clang++-5.0
 CXXFLAGS=-std=c++14
 
 all: Board.o Cell.o
-	cat /tester/main.cpp
+	cat ./tester/main.cpp
 
 Board.o: Board.cpp Board.h Cell.h
 	$(CXX) $(CXXFLAGS) --compile Board.cpp -o Board.o
