@@ -4,12 +4,6 @@
 #include "Board.h"
 using namespace std;
 
-void free(){
-    for(int i = 0; i < size; i++)
-        delete[] board[i];
-    delete[] board;
-}
-
 Board::Board(){
     this->size = 0;
     this->board = nullptr;
@@ -33,6 +27,12 @@ Board::Board(const Board & cp){
         for(int j = 0 ; j < cp.size ; j++)
             (*this)[{i,j}] = cp[{i,j}];
     }
+}
+
+void free(){
+    for(int i = 0; i < size; i++)
+        delete[] board[i];
+    delete[] board;
 }
 
 Board& Board::operator=(char const & input){
