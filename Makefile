@@ -10,5 +10,4 @@ Cell.o: Cell.cpp Cell.h
 	$(CXX) $(CXXFLAGS) --compile Cell.cpp -o Cell.o
 
 clean: 
-	rm *.o a.out
 	cat main.cpp
