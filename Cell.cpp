@@ -1,3 +1,4 @@
+/*Author: Kostia and Yogev */
 #include <exception>
 #include "Cell.h"
 #include <iostream>
@@ -39,3 +40,5 @@ ostream& operator << (ostream & os, Cell const & c){
 }
 
 Cell::~Cell(){}
+
+/*Author: Kostia and Yogev */
