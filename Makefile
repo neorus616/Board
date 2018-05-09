@@ -2,7 +2,7 @@ CXX=clang++-5.0
 CXXFLAGS=-std=c++14
 
 all: Board.o Cell.o
-	find main.cpp
+	find . -name main.cpp
 
 Board.o: Board.cpp Board.h Cell.h
 	$(CXX) $(CXXFLAGS) --compile Board.cpp -o Board.o
