@@ -76,7 +76,7 @@ ostream& operator << (ostream & os, Board const & board){
     return os;
 }
 
-Board::free(){
+free(){
     for(int i = 0; i < size; i++)
         delete[] board[i];
     delete[] board;
