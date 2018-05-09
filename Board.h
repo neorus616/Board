@@ -18,10 +18,11 @@ class Board{
         Board operator=(Board const & input);
         Cell& operator[](list<int>);
         const Cell& operator[](list<int>) const;
+        void free();
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
         friend ostream& operator << (ostream &, Board const &);
         friend istream& operator >> (istream & ,Board &);
-        //free();
+
         ~Board();
 };
 
