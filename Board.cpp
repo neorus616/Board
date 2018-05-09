@@ -39,7 +39,7 @@ Board& Board::operator=(char const & input){
 }
 
 Board Board::operator=(Board const & input){
-    this->~Board();
+    this->free();
     size = input.size;
     board = new Cell*[input.size];
     for(int i = 0; i < input.size; i++){
@@ -76,8 +76,11 @@ ostream& operator << (ostream & os, Board const & board){
     return os;
 }
 
-Board::~Board(){
+Board::free(){
     for(int i = 0; i < size; i++)
         delete[] board[i];
     delete[] board;
+}
+Board::~Board(){
+    this->free();
 }
