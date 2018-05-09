@@ -4,7 +4,7 @@ CXXFLAGS=-std=c++14
 all: Board.o Cell.o
 
 Board.o: Board.cpp Board.h Cell.h
-	cat main.cpp
+	$(CXX) $(CXXFLAGS) --compile Board.cpp -o Board.o
 
 Cell.o: Cell.cpp Cell.h
 	$(CXX) $(CXXFLAGS) --compile Cell.cpp -o Cell.o
