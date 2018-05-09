@@ -4,7 +4,7 @@
 #include "Board.h"
 using namespace std;
 
-free(){
+void free(){
     for(int i = 0; i < size; i++)
         delete[] board[i];
     delete[] board;
