@@ -4,6 +4,12 @@
 #include "Board.h"
 using namespace std;
 
+free(){
+    for(int i = 0; i < size; i++)
+        delete[] board[i];
+    delete[] board;
+}
+
 Board::Board(){
     this->size = 0;
     this->board = nullptr;
@@ -76,11 +82,6 @@ ostream& operator << (ostream & os, Board const & board){
     return os;
 }
 
-free(){
-    for(int i = 0; i < size; i++)
-        delete[] board[i];
-    delete[] board;
-}
 Board::~Board(){
     this->free();
 }
