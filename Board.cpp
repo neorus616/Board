@@ -1,3 +1,5 @@
+/*Author: Kostia and Yogev */
+
 #include <iostream>
 #include <string>
 #include <exception>
@@ -90,3 +92,6 @@ int Board::size() const{
 Board::~Board(){
     this->free();
 }
+
+
+/*Author: Kostia and Yogev */

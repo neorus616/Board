@@ -1,3 +1,4 @@
+/*Author: Kostia and Yogev */
 #include <exception>
 #include "Cell.h"
 #include <iostream>
@@ -9,7 +10,8 @@ Cell::Cell(){
 }
 
 Cell::Cell(const char & input){
-    throw IllegalCharException(input);
+    if(input != 'X' && input != 'O' && input != '.')
+        throw IllegalCharException(input);
     pox = input;
 }
 
@@ -38,3 +40,5 @@ ostream& operator <<(ostream & os, Cell const & c){
 }
 
 Cell::~Cell(){}
+
+/*Author: Kostia and Yogev */
