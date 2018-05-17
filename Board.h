@@ -3,11 +3,12 @@
 #include <list>
 #include <string>
 #include "Cell.h"
+#include "Coordinate.h"
 using namespace std;
 
 class Board{
     private:
-        int size;
+        int length;
         Cell** board;
        
     public:
@@ -16,8 +17,10 @@ class Board{
         Board(int);
         Board& operator=(char const &);
         Board operator=(Board const & input);
-        Cell& operator[](list<int>);
-        const Cell& operator[](list<int>) const;
+        Cell& operator[](const Coordinate);
+        const Cell& operator[](const Coordinate) const;
+        int size() const;
+        void free();
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
         friend ostream& operator << (ostream &, Board const &);
         friend istream& operator >> (istream & ,Board &);
@@ -26,13 +29,12 @@ class Board{
 };
 
 struct IllegalCoordinateException : public exception {
-    int a, b;
-    IllegalCoordinateException(int x, int y){
-        a = x;
-        b = y;
+    Coordinate cor;
+    IllegalCoordinateException(Coordinate c){
+        Coordinate cor(c);
     }
     const string theCoordinate() const throw () {
-        string s = to_string(a) + "," + to_string(b);
+        string s = to_string(cor.x) + "," + to_string(cor.y);
         return s;
    }
 };

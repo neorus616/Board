@@ -20,55 +20,61 @@ Board::Board(int size){
 }
 
 Board::Board(const Board & cp){
-    size = cp.size;
+    length = cp.size;
     board = new Cell*[cp.size];
     for(int i = 0; i < cp.size; i++){
-        board[i] = new Cell[size];
+        board[i] = new Cell[length];
         for(int j = 0 ; j < cp.size ; j++)
             (*this)[{i,j}] = cp[{i,j}];
     }
 }
 
+void Board::free(){
+    for(int i = 0; i < length; i++)
+        delete[] board[i];
+    delete[] board;
+}
+
 Board& Board::operator=(char const & input){
     if(input != '.')
         throw IllegalCharException(input);
-    for(int i = 0; i < size; i++)
-        for(int j = 0 ; j < size ; j++)
+    for(int i = 0; i < length; i++)
+        for(int j = 0 ; j < length ; j++)
             (*this)[{i,j}] = '.';
     return *this;
 }
 
 Board Board::operator=(Board const & input){
-    this->~Board();
-    size = input.size;
-    board = new Cell*[input.size];
-    for(int i = 0; i < input.size; i++){
-        board[i] = new Cell[size];
-        for(int j = 0 ; j < input.size ; j++)
+    this->free();
+    length = input.length;
+    board = new Cell*[input.length];
+    for(int i = 0; i < input.length; i++){
+        board[i] = new Cell[length];
+        for(int j = 0 ; j < input.length ; j++)
             (*this)[{i,j}] = input[{i,j}];
     }
     return *this;
 }
 
-Cell& Board::operator[](list<int> coor){
-    if(coor.size() != 2 || coor.front() > size-1 || coor.back() > size-1 || coor.front() < 0 || coor.back() < 0)
-        throw IllegalCoordinateException(coor.front(),coor.back());
-	int a = coor.front();
-	int b = coor.back();
+Cell& Board::operator[](const Coordinate coor){
+    if(coor.x > length-1 || coor.y > length-1 || coor.x < 0 || coor.y < 0)
+        throw IllegalCoordinateException(coor);
+	int a = coor.x;
+	int b = coor.y;
 		return this->board[a][b];
 }
 
-const Cell& Board::operator[](list<int> coor) const{
-    if(coor.size() != 2 || coor.front() > size-1 || coor.back() > size-1 || coor.front() < 0 || coor.back() < 0)
-        throw IllegalCoordinateException(coor.front(),coor.back());
-	int a = coor.front();
-	int b = coor.back();
+const Cell& Board::operator[](const Coordinate coor) const{
+    if(coor.x > length-1 || coor.y > length-1 || coor.x < 0 || coor.y < 0)
+        throw IllegalCoordinateException(coor);
+	int a = coor.x;
+	int b = coor.y;
 		return this->board[a][b];
 }
 
 ostream& operator << (ostream & os, Board const & board){
-    for(int i = 0 ; i < board.size ; i++){
-        for(int j = 0 ; j < board.size ; j++){
+    for(int i = 0 ; i < board.length ; i++){
+        for(int j = 0 ; j < board.length ; j++){
             os << board.board[i][j];
         }
         os << endl;
@@ -76,8 +82,11 @@ ostream& operator << (ostream & os, Board const & board){
     return os;
 }
 
+int Board::size() const{
+    return this->length;
+}
+
+
 Board::~Board(){
-    for(int i = 0; i < size; i++)
-        delete[] board[i];
-    delete[] board;
+    this->free();
 }

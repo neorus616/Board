@@ -20,12 +20,12 @@ Cell& Cell::operator = (const char & input){
     return *this;
 }
 
-Cell Cell::operator = (const Cell & input){
+Cell Cell::operator =(const Cell & input){
     this->pox = input.pox;
     return *this;
 }
 
-bool operator == (Cell const & l, char const & r){
+bool operator ==(Cell const & l, char const & r){
     return l.pox == r;
 }
 
@@ -33,7 +33,7 @@ Cell::operator char(){
     return pox;
 }
 
-ostream& operator << (ostream & os, Cell const & c){
+ostream& operator <<(ostream & os, Cell const & c){
     return os << c.pox;
 }
 
