@@ -12,3 +12,11 @@ TicTacToe::TicTacToe(int size){
 Board& TicTacToe::board(){
     return game;
 }
+
+Player& TicTacToe::winner(){
+    return winner;
+}
+
+void TicTacToe::play(Player& first, Player& second){
+    
+}

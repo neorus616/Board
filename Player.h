@@ -6,6 +6,7 @@ using namespace std;
 
 class Player{
     public:
+        Player();
         Player(char);
         virtual const std::string name() const;
         char myChar;

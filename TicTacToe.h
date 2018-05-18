@@ -9,11 +9,13 @@ Class TicTacToe{
     private:
         int size;
         Board game;
+        Player& winner;
+        
     
     public:
-    TicTacToe(int);
-    Board& board();
-    Player& winner();
-    void play(Player&, Player&);
+        TicTacToe(int);
+        Board& board();
+        Player& winner();
+        void play(Player&, Player&);
     
 };

@@ -2,6 +2,10 @@
 using namespace std;
 
 
+Player::Player(){
+    myChar = 'O';
+}
+
 
 Player::Player(char myChar){
     this->myChar = myChar;
