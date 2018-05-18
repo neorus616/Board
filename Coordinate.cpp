@@ -1,4 +1,4 @@
-#include <Coordinate.h>
+#include "Coordinate.h"
 
 Coordinate::Coordinate(){}
 
@@ -7,7 +7,7 @@ Coordinate::Coordinate(const Coordinate & c){
     this->x = c.y;
 }
 
-Coordinate::Coordinate(int x, int y){
+Coordinate::Coordinate(uint x, uint y){
     this->x = x;
     this->x = y;
 }

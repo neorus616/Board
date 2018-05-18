@@ -1,10 +1,11 @@
 #pragma once
+#include <sys/types.h>
 
 class Coordinate{
     public:
-        int x;
-        int y;    
+        uint x;
+        uint y;    
         Coordinate();
-        Coordinate(int, int);
+        Coordinate(uint, uint);
         Coordinate(const Coordinate &);
 };

@@ -1,21 +1,20 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Board.h"
 #include "Player.h"
 using namespace std;
 
-Class TicTacToe{
+class TicTacToe{
     private:
         int size;
-        Board game;
-        Player& winner;
+        Board* game;
+        Player* _winner;
+        bool boardFull();
         
-    
     public:
         TicTacToe(int);
-        Board& board();
-        Player& winner();
+        Board& board() const;
+        Player& winner() const;
         void play(Player&, Player&);
     
 };

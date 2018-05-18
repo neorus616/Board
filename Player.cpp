@@ -18,3 +18,7 @@ const string Player::name() const{
 const Coordinate play(const Board& board){
     
 }
+
+const char Player::getChar() const{
+    return myChar;
+}

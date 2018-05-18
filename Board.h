@@ -8,7 +8,7 @@ using namespace std;
 
 class Board{
     private:
-        int length;
+        int _size;
         Cell** board;
        
     public:
