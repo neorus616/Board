@@ -10,11 +10,13 @@ class TicTacToe{
         Board* game;
         Player* _winner;
         bool boardFull();
+        bool winMove(Coordinate,char);
         
     public:
         TicTacToe(int);
         Board& board() const;
         Player& winner() const;
         void play(Player&, Player&);
+        ~TicTacToe();
     
 };

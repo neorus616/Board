@@ -2,14 +2,8 @@
 using namespace std;
 
 
-Player::Player(){
-    myChar = 'O';
-}
+Player::Player(){}
 
-
-Player::Player(char myChar){
-    this->myChar = myChar;
-}
 
 const string Player::name() const{
      return "lolik"; 
@@ -17,6 +11,10 @@ const string Player::name() const{
 
 const Coordinate Player::play(const Board& board){
     
+}
+
+void Player::setChar(char myC){
+    myChar = myC;
 }
 
 const char Player::getChar() const{

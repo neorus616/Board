@@ -5,8 +5,8 @@
 
 void printResults(const TicTacToe& game) {
 	cout << endl << "The final board is " << endl << game.board();
-	cout << "And the winner is " << game.winner().name() 
-	     << ", playing as " << game.winner().getChar() << "!" << endl;
+	//cout << "And the winner is " << game.winner().name() 
+	//     << ", playing as " << game.winner().getChar() << "!" << endl;
 }
 
 void playAndPrintResults(TicTacToe& game, Player& xPlayer, Player& oPlayer) {
@@ -28,15 +28,15 @@ int main() {
 	IllegalPlayer player3;
 	ExceptionPlayer player4;
 
-// 	playAndPrintResults(game, player1, player2);
-// 	/*
-// 		The final board is 
-// 		XXXX
-// 		O...
-// 		O...
-// 		O...
-//     	And the winner is XYPlayer, playing as X!
-// 	*/
+ 	playAndPrintResults(game, player1, player2);
+	/*
+		The final board is 
+		XXXX
+		O...
+		O...
+		O...
+    	And the winner is XYPlayer, playing as X!
+	*/
 
 // 	playAndPrintResults(game, player2, player1);  
 // 	/*
