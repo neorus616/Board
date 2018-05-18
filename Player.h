@@ -11,5 +11,5 @@ class Player{
         virtual const std::string name() const;
         char myChar;
         virtual const Coordinate play(const Board& board);
-        const char getChar() const;
+        virtual const char getChar() const;
 };

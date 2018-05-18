@@ -12,7 +12,7 @@ Player::Player(char myChar){
 }
 
 const string Player::name() const{
-     return "XYPlayer"; 
+     return "lolik"; 
      }
 
 const Coordinate play(const Board& board){
