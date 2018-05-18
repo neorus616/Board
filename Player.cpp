@@ -15,7 +15,7 @@ const string Player::name() const{
      return "lolik"; 
      }
 
-const Coordinate play(const Board& board){
+const Coordinate Player::play(const Board& board){
     
 }
 

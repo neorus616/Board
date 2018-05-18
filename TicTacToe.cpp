@@ -17,7 +17,7 @@ Player& TicTacToe::winner() const{
     return *_winner;
 }
 
-void TicTacToe::play(Player& first, Player& second){
+void TicTacToe::play(Player& xPlayer, Player& oPlayer){
     
 }
 

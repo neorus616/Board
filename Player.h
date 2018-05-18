@@ -8,8 +8,8 @@ class Player{
     public:
         Player();
         Player(char);
-        virtual const std::string name() const;
+        virtual const string name() const;
         char myChar;
-        virtual const Coordinate play(const Board& board);
+        virtual const Coordinate play(const Board&);
         virtual const char getChar() const;
 };
