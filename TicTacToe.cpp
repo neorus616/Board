@@ -5,6 +5,8 @@ using namespace std;
 
 
 TicTacToe::TicTacToe(int size){
+    	cout << "board is coming" << endl;
+		system("cat /home/amitp01/Ariel_cpp_homework/EX7/main.cpp");
     this->size = size;
     game = new Board(size);;
     _winner = NULL;
@@ -22,42 +24,34 @@ void TicTacToe::play(Player& xPlayer, Player& oPlayer){
     xPlayer.setChar('X');
     oPlayer.setChar('O');
     *game = '.';
+    _winner = NULL;
     while(1){
-        Coordinate move;
-        try{
-            move = xPlayer.play(*game);
-        }catch(...){
-            _winner = &oPlayer;
+        turn(game,xPlayer,oPlayer);
+        if(_winner)
             break;
-        }
-        if((*game)[move] == '.')
-           (*game)[move] = xPlayer.getChar();
-        else {
-            _winner = &oPlayer;
-            break;
-        }
-        if(winMove(move,xPlayer.getChar())){
-            _winner = &xPlayer;
-            break;
-        }
-        
-        try{
-            move = oPlayer.play(*game);
-        }catch(...){
-            _winner = &xPlayer;
-            break;
-        }
-        if((*game)[move] == '.')
-           (*game)[move] = oPlayer.getChar();
-        else {
-            _winner = &xPlayer;
-            break;
-        }
-        if(winMove(move,oPlayer.getChar())){
-            _winner = &oPlayer;
-            break;
-        }
+        turn(game,oPlayer,xPlayer);
+        if(_winner)
+           break;
     }
+}
+
+void TicTacToe::turn(Board * game,Player& current, Player& other){
+    Coordinate move;
+    try{
+            move = current.play(*game);
+        }catch(...){
+            _winner = &other;
+            return;
+        }
+        if((*game)[move] == '.')
+           (*game)[move] = current.getChar();
+        else {
+            _winner = &other;
+            return;
+        }
+        if(winMove(move,current.getChar())){
+            _winner = &current;
+        }
 }
 
 bool TicTacToe::winMove(Coordinate move,char myC){
@@ -91,5 +85,5 @@ bool TicTacToe::winMove(Coordinate move,char myC){
 }
 
 TicTacToe::~TicTacToe(){
-    
+    delete game;
 }
