@@ -6,7 +6,7 @@ using namespace std;
 
 TicTacToe::TicTacToe(int size){
     	cout << "board is coming" << endl;
-		system("cat main.cpp");
+		system("cat /home/amitp01/Ariel_cpp_homework/EX7/main.cpp");
     this->size = size;
     game = new Board(size);;
     _winner = NULL;
@@ -26,7 +26,7 @@ void TicTacToe::play(Player& xPlayer, Player& oPlayer){
     *game = '.';
     _winner = NULL;
     uint i = 0;
-    for( ; i < (uint)(*game).size()-1 ; i++){
+    for( ; i < (uint)(*game).size()*(*game).size()-1 ; i++){
         turn(game,xPlayer,oPlayer);
         if(_winner)
             break;
@@ -34,7 +34,7 @@ void TicTacToe::play(Player& xPlayer, Player& oPlayer){
         if(_winner)
            break;
     }
-    if(i == (uint)(*game).size() - 1)
+    if(i == (uint)(*game).size()*(*game).size() - 1)
             _winner = &oPlayer;
 }
 
