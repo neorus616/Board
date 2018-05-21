@@ -26,7 +26,7 @@ void TicTacToe::play(Player& xPlayer, Player& oPlayer){
     *game = '.';
     _winner = NULL;
     uint i = 0;
-    for( ; i < (uint)(*game).size()*(*game).size()-1 ; i++){
+    for( ; i < (uint)(*game).size()*(*game).size() ; i++){
         turn(game,xPlayer,oPlayer);
         if(_winner)
             break;
@@ -34,7 +34,7 @@ void TicTacToe::play(Player& xPlayer, Player& oPlayer){
         if(_winner)
            break;
     }
-    if(i == (uint)(*game).size()*(*game).size() - 1)
+    if(i == (uint)(*game).size()*(*game).size())
             _winner = &oPlayer;
 }
 
