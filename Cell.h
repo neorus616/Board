@@ -14,6 +14,7 @@ class Cell{
         Cell operator = (const Cell & input);
         operator char();
         friend bool operator == (Cell const &, char const &);
+        friend bool operator != (Cell const &, char const &);
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
         friend ostream& operator << (ostream &, Cell const &);
 

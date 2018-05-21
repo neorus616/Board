@@ -31,6 +31,10 @@ bool operator ==(Cell const & l, char const & r){
     return l.pox == r;
 }
 
+bool operator !=(Cell const & l, char const & r){
+    return !(l==r);
+}
+
 Cell::operator char(){
     return pox;
 }
