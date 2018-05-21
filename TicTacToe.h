@@ -11,6 +11,7 @@ class TicTacToe{
         Player* _winner;
         bool boardFull();
         bool winMove(Coordinate,char);
+        void turn(Board *,Player&, Player&);
         
     public:
         TicTacToe(int);
