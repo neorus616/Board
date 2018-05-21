@@ -59,7 +59,7 @@ Board Board::operator=(Board const & input){
 }
 
 Cell& Board::operator[](const Coordinate coor){
-    if(coor.x > _size-1 || coor.y > _size-1 || coor.x < 0 || coor.y < 0)
+    if(coor.x > _size-1 || coor.y > _size-1)
         throw IllegalCoordinateException(coor);
 	int a = coor.x;
 	int b = coor.y;
@@ -67,7 +67,7 @@ Cell& Board::operator[](const Coordinate coor){
 }
 
 const Cell& Board::operator[](const Coordinate coor) const{
-    if(coor.x > _size-1 || coor.y > _size-1 || coor.x < 0 || coor.y < 0)
+    if(coor.x > _size-1 || coor.y > _size-1)
         throw IllegalCoordinateException(coor);
 	int a = coor.x;
 	int b = coor.y;

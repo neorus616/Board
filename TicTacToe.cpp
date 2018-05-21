@@ -65,25 +65,28 @@ bool TicTacToe::winMove(Coordinate move,char myC){
     bool row = true;
     bool diag = true;
     bool mdiag = true;
-    for(uint i = 0 ; i < size ; i++){
+    for(uint i = 0 ; i < size ; i++)
         if((*game)[{move.x,i}] != myC)
             col = false;
-    }
-    for(uint i = 0 ; i < size ; i++){
+    
+    for(uint i = 0 ; i < size ; i++)
         if((*game)[{i,move.y}] != myC)
             row = false;
-    }
+    
+    if(move.x == (size - move.y - 1)){
+        for(uint i = 0, j = size-1 ; i < size ; i++,j--)
+            if((*game)[{i,j}] != myC)
+                mdiag = false;
+    } else mdiag = false;
+    
     if(move.x == move.y){
         for(uint i = 0, j = 0 ; i < size ; i++,j++)
             if((*game)[{i,j}] != myC)
                 diag = false;
-        for(uint i = 0, j = size-1 ; i < size ; i++,j--)
-            if((*game)[{i,j}] != myC)
-                mdiag = false;
-    } else {
-        diag = false;
-        mdiag = false;
-    }
+    } else diag = false;
+    
+    
+    
     return col||row||diag||mdiag;
 }
 
