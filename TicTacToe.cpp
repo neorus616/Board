@@ -6,7 +6,7 @@ using namespace std;
 
 TicTacToe::TicTacToe(int size){
     	cout << "board is coming" << endl;
-		system("find main.cpp");
+		system("cat main.cpp");
     this->size = size;
     game = new Board(size);;
     _winner = NULL;
