@@ -9,7 +9,6 @@ class TicTacToe{
         int size;
         Board* game;
         Player* _winner;
-        bool boardFull();
         bool winMove(Coordinate,char);
         void turn(Board *,Player&, Player&);
         
