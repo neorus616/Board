@@ -84,16 +84,43 @@ ostream& operator << (ostream & os, Board const & board){
     return os;
 }
 
-istream& operator>> (istream& is, Board & board){
-    string line;
-    int row = 0, col = 0;
-    while((getline(is, line) != EOF){
-        for(int col = 0; col < line.length(); col++){
-            board[{row,col}] = line[col];
+istream& operator >> (istream & is,Board & board){
+    string tmp;
+    uint counter = 0;
+    uint length = 0;
+    while(is >> tmp){
+        if(!counter){
+            length = tmp.length();
+            board.free();
+            board._size = length;
+            board.board = new Cell*[length];
+            for(uint i = 0; i < length; i++){
+                board.board[i] = new Cell[length];
+            }
+            board.inputChecker(tmp);
+            board.inputInsert(board,tmp,counter);
         }
-        row++;
+        else if(counter < length && tmp.length() == length){
+            board.inputChecker(tmp);
+            board.inputInsert(board,tmp,counter);
+        } else{ 
+            board.free();
+            throw "wrong input";
+        }
     }
-    return is;
+}
+
+void Board::inputChecker(string & line){
+    for(int i = 0 ; i < line.length() ; i++)
+        if(line.at(i) != 'X' && line.at(i) != 'O' && line.at(i) != '.')
+            throw "wrong input";
+}
+
+void Board::inputInsert(Board & board, string & line, uint & counter){
+    for(int i = 0 ; i < board._size ; i++){
+        board[{counter,i}] = line.at(i);
+    }
+        counter++;
 }
 
 int Board::size() const{
