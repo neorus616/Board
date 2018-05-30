@@ -10,6 +10,8 @@ class Board{
     private:
         int _size;
         Cell** board;
+        void inputInsert(Board & , string & , uint &);
+        void inputChecker(string &);
        
     public:
         Board();
