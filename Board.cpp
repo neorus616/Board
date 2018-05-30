@@ -84,6 +84,18 @@ ostream& operator << (ostream & os, Board const & board){
     return os;
 }
 
+istream& operator>> (istream& is, Board & board){
+    string line;
+    int row = 0, col = 0;
+    while((getline(is, line) != EOF){
+        for(int col = 0; col < line.length(); col++){
+            board[{row,col}] = line[col];
+        }
+        row++;
+    }
+    return is;
+}
+
 int Board::size() const{
     return this->_size;
 }
