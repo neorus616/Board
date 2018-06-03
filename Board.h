@@ -31,8 +31,8 @@ class Board{
         int size() const;
         void free();
         string draw(int);
-        void drawx(RGB *, int, int);
-        void drawo(RGB *, int, int);
+        void drawx(RGB *, int, int,int);
+        void drawo(RGB *, int, int,int);
         bool is_file_exist(string);
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
         friend ostream& operator << (ostream &, Board const &);

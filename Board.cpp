@@ -133,27 +133,26 @@ string Board::draw(int n){
                 image[i*n + j].green = 200;
                 image[i*n + j].blue = 200;
         }
+    int k = n/this->size();
     for(uint i = 0; i < this->size(); i++){
         for(uint j = 0; j < this->size(); j++){
-            if((*this)[{i,j}] == 'X'){
-                drawx(image, i*(n*n/this->size())+j*n/this->size()+0.99, n/this->size()+0.99);
-                }
-            else if((*this)[{i,j}] == 'O'){
-                drawo(image, i*(n*n/this->size())+j*n/this->size(), n/this->size());
-                }
+            if((*this)[{i,j}] == 'X')
+                drawx(image, i*(n*k)+j*k + n%this->size()/2, k,n);
+            else if((*this)[{i,j}] == 'O')
+                drawo(image, i*(n*k)+j*k + n%this->size()/2, k,n);
         }
     }
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            if((j>0 && j % (n / this->size()) == 0)){
-                image[i*n + j].red = 0;
-                image[i*n + j].green = 0;
-                image[i*n + j].blue = 0;
+    for(int i = 0; i < n-n%this->size(); i++){
+        for(int j = 0; j < n-n%this->size(); j++){
+            if(j>0 && j % k == 0 && j< n-k){
+                image[(i+n%this->size()/2)*n + j+n%this->size()/2].red = 0;
+                image[(i+n%this->size()/2)*n + j+n%this->size()/2].green = 0;
+                image[(i+n%this->size()/2)*n + j+n%this->size()/2].blue = 0;
             }
-            if((i>0 && i % (n / this->size()) == 0)){
-                image[i*n + j].red = 0;
-                image[i*n + j].green = 0;
-                image[i*n + j].blue = 0; 
+            if(i>0 && i % k == 0){
+                image[(i+n%this->size()/2)*n + j+n%this->size()/2].red = 0;
+                image[(i+n%this->size()/2)*n + j+n%this->size()/2].green = 0;
+                image[(i+n%this->size()/2)*n + j+n%this->size()/2].blue = 0;
             }
         }
     }
@@ -172,24 +171,24 @@ string Board::draw(int n){
     return filename;
 }
 
-void Board::drawx(RGB * image, int x, int n){
+void Board::drawx(RGB * image, int x, int n,int orig){
     for (int i=0; i<n; i++)
         for (int j=0; j<n; ++j)
             if (i == j || i == j+1 || i+1 == j || (n - i - 1 == j) || (n - i - 2 == j) || (n - i == j)){
-                image[x+i*n*this->size()+j].red = 255;
-                image[x+i*n*this->size()+j].green = 0;
-                image[x+i*n*this->size()+j].blue = 0;
+                image[x+(i+orig%this->size()/2)*orig+j].red = 255;
+                image[x+(i+orig%this->size()/2)*orig+j].green = 0;
+                image[x+(i+orig%this->size()/2)*orig+j].blue = 0;
             }
 }
 
-void Board::drawo(RGB * image, int x, int n){
+void Board::drawo(RGB * image, int x, int n,int orig){
     for (int i=0; i<n; ++i)
         for (int j=0; j < n; ++j)
             if(((i-0.5*n)*(i-0.5*n) + (j-0.5*n)*(j-0.5*n) <= 0.5*n*0.5*n+n) &&
                 ((i-0.5*n)*(i-0.5*n) + (j-0.5*n)*(j-0.5*n) >= 0.5*n*0.5*n-n)){
-                image[x+i*n*this->size()+j].red = 0;
-                image[x+i*n*this->size()+j].green = 0;
-                image[x+i*n*this->size()+j].blue = 255;
+                image[x+(i+orig%this->size()/2)*orig+j].red = 0;
+                image[x+(i+orig%this->size()/2)*orig+j].green = 0;
+                image[x+(i+orig%this->size()/2)*orig+j].blue = 255;
             }
 }
 
