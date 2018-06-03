@@ -22,6 +22,7 @@ class Board{
         Cell& operator[](const Coordinate);
         const Cell& operator[](const Coordinate) const;
         int size() const;
+        string draw(int);
         void free();
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
         friend ostream& operator << (ostream &, Board const &);

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include <fstream>
 #include "Board.h"
 using namespace std;
 
@@ -127,6 +128,31 @@ int Board::size() const{
     return this->_size;
 }
 
+string Board::draw(int res){
+    int pix_per_cell = res / this->size();
+    if (pix_per_cell < 4) { throw "resultion too low"; }
+
+    string filename = to_string(res);
+    int counter = 0;
+
+    while (is_file_exist(filename)){
+        counter++;
+        filename = to_string(res) + "_" + to_string(counter);
+    }
+
+    filename += ".ppm";
+    ofstream out(filename, ios::out | ios::binary);
+    out << "P6" << endl << res <<" " << res << endl << 255 << endl;
+
+
+    return filename;
+}
+
+bool is_file_exist(const string fileName)
+{
+    std::ifstream infile(fileName);
+    return infile.good();
+}
 
 Board::~Board(){
     this->free();
