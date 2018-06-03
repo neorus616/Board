@@ -136,15 +136,9 @@ string Board::draw(int n){
     for(uint i = 0; i < this->size(); i++){
         for(uint j = 0; j < this->size(); j++){
             if((*this)[{i,j}] == 'X'){
-                cout << "X =? " << (*this)[{i,j}] << endl;
-                cout << "i =? " << i*(n/this->size()) << endl;
-                cout << "j =? " << j*(n/this->size()) << endl;
                 drawx(image, i*(n*n/this->size())+j*n/this->size()+0.99, n/this->size()+0.99);
                 }
             else if((*this)[{i,j}] == 'O'){
-                cout << "O =? " << (*this)[{i,j}] << endl;
-                cout << "i =? " << i*(n/this->size()) << endl;
-                cout << "j =? " << j*(n/this->size()) << endl;
                 drawo(image, i*(n*n/this->size())+j*n/this->size(), n/this->size());
                 }
         }
@@ -170,7 +164,6 @@ string Board::draw(int n){
         counter++;
         filename = to_string(n) + "_" + to_string(counter);
     }
-    cout << filename << endl;
     filename += ".ppm";
     ofstream out(filename, ios::out | ios::binary);
     out << "P6" << endl << n << " " << n << endl << 255 << endl;
