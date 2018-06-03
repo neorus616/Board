@@ -142,9 +142,19 @@ string Board::draw(int res){
 
     filename += ".ppm";
     ofstream out(filename, ios::out | ios::binary);
-    out << "P6" << endl << res <<" " << res << endl << 255 << endl;
+    out << "P6" << endl << res << " " << res << endl << 255 << endl;
 
-
+    RGB img[res][res];
+    for (int y = 0; y < res; y++){
+        for (int x = 0; x < res; x++){
+            if ( ( (y % pix_per_cell) == (0 || 1) ) || ( (x % pix_per_cell) == (0 || 1) ) ){
+                img[y][x].blue = 0;
+                img[y][x].green = 0;
+                img[y][x].red = 0;
+            }
+            else if ()
+        }
+    }
     return filename;
 }
 
