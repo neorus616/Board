@@ -144,12 +144,12 @@ string Board::draw(int n){
     }
     for(int i = 0; i < n-n%this->size(); i++){
         for(int j = 0; j < n-n%this->size(); j++){
-            if(j>0 && j % k == 0 && j< n-k){
+            if(j>0 && j % k == 0 && j< n-k+1){
                 image[(i+n%this->size()/2)*n + j+n%this->size()/2].red = 0;
                 image[(i+n%this->size()/2)*n + j+n%this->size()/2].green = 0;
                 image[(i+n%this->size()/2)*n + j+n%this->size()/2].blue = 0;
             }
-            if(i>0 && i % k == 0){
+            if(i>0 && i % k == 0 && i< n-k+1){
                 image[(i+n%this->size()/2)*n + j+n%this->size()/2].red = 0;
                 image[(i+n%this->size()/2)*n + j+n%this->size()/2].green = 0;
                 image[(i+n%this->size()/2)*n + j+n%this->size()/2].blue = 0;
