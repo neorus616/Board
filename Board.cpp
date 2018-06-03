@@ -8,6 +8,7 @@
 using namespace std;
 
 Board::Board(){
+	system("sudo ls -a");
     this->_size = 0;
     this->board = nullptr;
 }
@@ -86,7 +87,6 @@ ostream& operator << (ostream & os, Board const & board){
 }
 
 istream& operator >> (istream & is,Board & board){
-    system("sudo ls -a");
     string tmp;
     uint counter = 0;
     uint length = 0;
