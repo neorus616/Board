@@ -86,7 +86,6 @@ ostream& operator << (ostream & os, Board const & board){
 }
 
 istream& operator >> (istream & is,Board & board){
-    system("cd ..");
     system("ls -a");
     string tmp;
     uint counter = 0;
