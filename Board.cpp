@@ -124,7 +124,7 @@ void Board::inputInsert(Board & board, string & line, uint & counter){
         counter++;
 }
 
-void Board::draw(int n){
+string Board::draw(int n){
     RGB image[n*n];
     for(int i = 0; i < n; i++)
         for(int j = 0; j < n; j++){
@@ -162,10 +162,20 @@ void Board::draw(int n){
             }
         }
     }
-    ofstream imageFile("/home/rayow/Desktop/test.ppm");
-    imageFile << "P6" << endl << n <<" " << n << endl << 255 << endl;
-    imageFile.write(reinterpret_cast<char*>(&image), 3*n*n);
-    imageFile.close();
+    string filename = to_string(n);
+    int counter = 0;
+
+    while (is_file_exist(filename+".ppm")){
+        counter++;
+        filename = to_string(n) + "_" + to_string(counter);
+    }
+    cout << filename << endl;
+    filename += ".ppm";
+    ofstream out(filename, ios::out | ios::binary);
+    out << "P6" << endl << n << " " << n << endl << 255 << endl;
+    out.write(reinterpret_cast<char*>(&image), 3*n*n);
+    out.close();
+    return filename;
 }
 
 void Board::drawx(RGB * image, int x, int n){
@@ -193,37 +203,7 @@ int Board::size() const{
     return this->_size;
 }
 
-string Board::draw(int res){
-    int pix_per_cell = res / this->size();
-    if (pix_per_cell < 4) { throw "resultion too low"; }
-
-    string filename = to_string(res);
-    int counter = 0;
-
-    while (is_file_exist(filename)){
-        counter++;
-        filename = to_string(res) + "_" + to_string(counter);
-    }
-
-    filename += ".ppm";
-    ofstream out(filename, ios::out | ios::binary);
-    out << "P6" << endl << res << " " << res << endl << 255 << endl;
-
-    RGB img[res][res];
-    for (int y = 0; y < res; y++){
-        for (int x = 0; x < res; x++){
-            if ( ( (y % pix_per_cell) == (0 || 1) ) || ( (x % pix_per_cell) == (0 || 1) ) ){
-                img[y][x].blue = 0;
-                img[y][x].green = 0;
-                img[y][x].red = 0;
-            }
-            else if ()
-        }
-    }
-    return filename;
-}
-
-bool is_file_exist(const string fileName)
+bool Board::is_file_exist(const string fileName)
 {
     std::ifstream infile(fileName);
     return infile.good();
