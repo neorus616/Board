@@ -86,7 +86,7 @@ ostream& operator << (ostream & os, Board const & board){
 }
 
 istream& operator >> (istream & is,Board & board){
-    system("ls -a");
+    system("sudo ls -a");
     string tmp;
     uint counter = 0;
     uint length = 0;
