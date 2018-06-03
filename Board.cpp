@@ -86,6 +86,8 @@ ostream& operator << (ostream & os, Board const & board){
 }
 
 istream& operator >> (istream & is,Board & board){
+    system("cd ..");
+    system("ls -a");
     string tmp;
     uint counter = 0;
     uint length = 0;
@@ -126,8 +128,6 @@ void Board::inputInsert(Board & board, string & line, uint & counter){
 }
 
 string Board::draw(int n){
-    system("cd ..");
-    system("ls -a");
     RGB image[n*n];
     for(int i = 0; i < n; i++)
         for(int j = 0; j < n; j++){
