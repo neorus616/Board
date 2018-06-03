@@ -109,6 +109,7 @@ istream& operator >> (istream & is,Board & board){
             throw "wrong input";
         }
     }
+    return is;
 }
 
 void Board::inputChecker(string & line){
@@ -118,7 +119,7 @@ void Board::inputChecker(string & line){
 }
 
 void Board::inputInsert(Board & board, string & line, uint & counter){
-    for(int i = 0 ; i < board._size ; i++){
+    for(uint i = 0 ; i < board._size ; i++){
         board[{counter,i}] = line.at(i);
     }
         counter++;
@@ -132,8 +133,8 @@ string Board::draw(int n){
                 image[i*n + j].green = 200;
                 image[i*n + j].blue = 200;
         }
-    for(int i = 0; i < this->size(); i++){
-        for(int j = 0; j < this->size(); j++){
+    for(uint i = 0; i < this->size(); i++){
+        for(uint j = 0; j < this->size(); j++){
             if((*this)[{i,j}] == 'X'){
                 cout << "X =? " << (*this)[{i,j}] << endl;
                 cout << "i =? " << i*(n/this->size()) << endl;
