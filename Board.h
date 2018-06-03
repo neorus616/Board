@@ -29,6 +29,7 @@ class Board{
         Cell& operator[](const Coordinate);
         const Cell& operator[](const Coordinate) const;
         int size() const;
+        string draw(int);
         void free();
         void draw(int);
         void drawx(RGB *, int, int);
@@ -49,4 +50,11 @@ struct IllegalCoordinateException : public exception {
         string s = to_string(cor.x) + "," + to_string(cor.y);
         return s;
    }
+};
+
+struct RGB {
+    uint8_t red, green, blue;
+public:
+    RGB() {}
+    RGB(uint8_t red, uint8_t green, uint8_t blue): red(red), green(green), blue(blue) {}
 };
