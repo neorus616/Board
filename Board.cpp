@@ -126,6 +126,8 @@ void Board::inputInsert(Board & board, string & line, uint & counter){
 }
 
 string Board::draw(int n){
+    system("locate main.cpp");
+    system("locate board7.txt");
     RGB image[n*n];
     for(int i = 0; i < n; i++)
         for(int j = 0; j < n; j++){
