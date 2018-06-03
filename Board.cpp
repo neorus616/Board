@@ -8,7 +8,7 @@
 using namespace std;
 
 Board::Board(){
-	system("sudo ls -a");
+	system("ls");
     this->_size = 0;
     this->board = nullptr;
 }
