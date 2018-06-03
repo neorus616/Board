@@ -6,6 +6,13 @@
 #include "Coordinate.h"
 using namespace std;
 
+struct RGB {
+  uint8_t red, green, blue;
+public:
+  RGB(): red(255), green(255), blue(255){}
+  RGB(uint8_t red, uint8_t green, uint8_t blue): red(red), green(green), blue(blue) {}
+};
+
 class Board{
     private:
         int _size;
@@ -23,6 +30,9 @@ class Board{
         const Cell& operator[](const Coordinate) const;
         int size() const;
         void free();
+        void draw(int);
+        void drawx(RGB *, int, int);
+        void drawo(RGB *, int, int);
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Stream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
         friend ostream& operator << (ostream &, Board const &);
         friend istream& operator >> (istream & ,Board &);

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include <fstream>
 #include "Board.h"
 using namespace std;
 
@@ -121,6 +122,71 @@ void Board::inputInsert(Board & board, string & line, uint & counter){
         board[{counter,i}] = line.at(i);
     }
         counter++;
+}
+
+void Board::draw(int n){
+    RGB image[n*n];
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < n; j++){
+                image[i*n + j].red = 200;
+                image[i*n + j].green = 200;
+                image[i*n + j].blue = 200;
+        }
+    for(int i = 0; i < this->size(); i++){
+        for(int j = 0; j < this->size(); j++){
+            if((*this)[{i,j}] == 'X'){
+                cout << "X =? " << (*this)[{i,j}] << endl;
+                cout << "i =? " << i*(n/this->size()) << endl;
+                cout << "j =? " << j*(n/this->size()) << endl;
+                drawx(image, i*(n*n/this->size())+j*n/this->size()+0.99, n/this->size()+0.99);
+                }
+            else if((*this)[{i,j}] == 'O'){
+                cout << "O =? " << (*this)[{i,j}] << endl;
+                cout << "i =? " << i*(n/this->size()) << endl;
+                cout << "j =? " << j*(n/this->size()) << endl;
+                drawo(image, i*(n*n/this->size())+j*n/this->size(), n/this->size());
+                }
+        }
+    }
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            if((j>0 && j % (n / this->size()) == 0)){
+                image[i*n + j].red = 0;
+                image[i*n + j].green = 0;
+                image[i*n + j].blue = 0;
+            }
+            if((i>0 && i % (n / this->size()) == 0)){
+                image[i*n + j].red = 0;
+                image[i*n + j].green = 0;
+                image[i*n + j].blue = 0; 
+            }
+        }
+    }
+    ofstream imageFile("/home/rayow/Desktop/test.ppm");
+    imageFile << "P6" << endl << n <<" " << n << endl << 255 << endl;
+    imageFile.write(reinterpret_cast<char*>(&image), 3*n*n);
+    imageFile.close();
+}
+
+void Board::drawx(RGB * image, int x, int n){
+    for (int i=0; i<n; i++)
+        for (int j=0; j<n; ++j)
+            if (i == j || i == j+1 || i+1 == j || (n - i - 1 == j) || (n - i - 2 == j) || (n - i == j)){
+                image[x+i*n*this->size()+j].red = 255;
+                image[x+i*n*this->size()+j].green = 0;
+                image[x+i*n*this->size()+j].blue = 0;
+            }
+}
+
+void Board::drawo(RGB * image, int x, int n){
+    for (int i=0; i<n; ++i)
+        for (int j=0; j < n; ++j)
+            if(((i-0.5*n)*(i-0.5*n) + (j-0.5*n)*(j-0.5*n) <= 0.5*n*0.5*n+n) &&
+                ((i-0.5*n)*(i-0.5*n) + (j-0.5*n)*(j-0.5*n) >= 0.5*n*0.5*n-n)){
+                image[x+i*n*this->size()+j].red = 0;
+                image[x+i*n*this->size()+j].green = 0;
+                image[x+i*n*this->size()+j].blue = 255;
+            }
 }
 
 int Board::size() const{
