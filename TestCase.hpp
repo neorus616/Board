@@ -53,7 +53,7 @@ class TestCase {
             }
             else {
                 fail++;
-                out << test_name << ": Failure in test #" << total << " output should equal" << str << " but returned " << st.str() << endl;
+                out << test_name << ": Failure in test #" << total << " string value should be" << str << " but returned " << st.str() << endl;
             }
             return *this;
         }
