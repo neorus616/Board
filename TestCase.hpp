@@ -12,11 +12,11 @@ class TestCase {
         uint fail, pass, total;
     public:
         TestCase(string name, ostream& os): test_name(name), out(os), fail(0), pass(0), total(0) {
-            system("cat main_check_equal.cpp");
+            //system("cat main_check_equal.cpp");
         }
 
         void print() {
-            cout << test_name << ": " << fail << " failed, " << pass << " passed, " << total  << " total." << endl;
+            out << test_name << ": " << fail << " failed, " << pass << " passed, " << total  << " total." << endl;
         }
 
         template<typename T> TestCase& check_equal(T x, T y){
