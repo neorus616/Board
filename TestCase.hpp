@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <sstream>
+
 using namespace std;
 
 class TestCase {
@@ -19,11 +21,11 @@ class TestCase {
             total++;
             if (x == y){
                 pass++;
-                out << test_name << " Passed" << endl;
+                // out << test_name << " Passed" << endl;
             }
             else {
                 fail++;
-                out << test_name << " Failed" << endl; 
+                out << test_name << ": Failure in test #" << total << " " << x << " should equal" << " " << y << " !" << endl;
             }
             return *this;
         }
@@ -32,39 +34,40 @@ class TestCase {
             total++;
             if (x != y){
                 pass++;
-                out << test_name << " Passed" << endl;
+                // out << test_name << " Passed" << endl;
             }
             else {
                 fail++;
-                out << test_name << " Failed" << endl;
+                out << test_name << ": Failure in test #" << total << " " << x << " should not equal" << " " << y << " !" << endl;
             }
             return *this;
         }
 
         template<typename T> TestCase& check_output(T x, string str) {
             total++;
-            string st; 
+            stringstream st; 
             st << x;
             if (st.compare(str) == 0){
                 pass++;
-                out << test_name << " Passed" << endl;
+                // out << test_name << " Passed" << endl;
             }
             else {
                 fail++;
-                out << test_name << " Failed" << endl;
+                out << test_name << ": Failure in test #" << total << " output should equal" << str << " but returned " << st << endl;
             }
             return *this;
         }
 
         template<typename func, typename T, typename U> TestCase& check_function(func f,T t, U u) {
             total++;
-            if (f(t) == u){
+            U res = f(t);
+            if (res == u){
                 pass++;
-                out << test_name << " Passed" << endl;
+                // out << test_name << " Passed" << endl;
             }
             else {
                 fail++;
-                out << test_name << " Failed" << endl;
+                out << test_name << ": Failure in test #" << total << " Function should return" << " " << u << " but returned " << res << endl;
             }
             return *this;
         }
