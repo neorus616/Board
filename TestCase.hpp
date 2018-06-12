@@ -14,7 +14,7 @@ class TestCase {
         TestCase(string nme, ostream& os): test_name(nme), out(os), fail(0), pass(0), total(0) {}
 
         void print() {
-            cout << " Total: " << total  << " Passed: " << pass  << " Failed: " << fail << endl;
+            cout << fail << " Failed " << pass << " passed " << total  << " total " << endl;
         }
 
         template<typename T> TestCase& check_equal(T x, T y){
@@ -27,6 +27,7 @@ class TestCase {
                 fail++;
                 out << test_name << ": Failure in test #" << total << " " << x << " should equal" << " " << y << " !" << endl;
             }
+            print();
             return *this;
         }
 
@@ -40,6 +41,7 @@ class TestCase {
                 fail++;
                 out << test_name << ": Failure in test #" << total << " " << x << " should not equal" << " " << y << " !" << endl;
             }
+            print();
             return *this;
         }
 
@@ -53,8 +55,9 @@ class TestCase {
             }
             else {
                 fail++;
-                out << test_name << ": Failure in test #" << total << " string value should be" << str << " but returned " << st.str() << endl;
+                out << test_name << ": Failure in test #" << total << " string value should be" << str << " but is " << st.str() << endl;
             }
+            print();
             return *this;
         }
 
@@ -69,6 +72,7 @@ class TestCase {
                 fail++;
                 out << test_name << ": Failure in test #" << total << " Function should return" << " " << u << " but returned " << res << endl;
             }
+            print();
             return *this;
         }
 
