@@ -9,12 +9,13 @@ class TestCase {
         ostream &out;
         uint fail, pass, total;
     public:
-        TestCase(string nme, ostream& os): test_name(nme), out(os), fail(0), pass(0), total(0) {} 
+        TestCase(string nme, ostream& os): test_name(nme), out(os), fail(0), pass(0), total(0) {}
+         
         void print() {
             out << " Total: " << total << endl << "Passed: " << pass << endl << "Failed: " << fail << endl;
         }
 
-        template<typename T> TestCase check_equal(T x, T y){
+        template<typename T> TestCase& check_equal(T x, T y){
             total++;
             if (x == y){
                 pass++;
@@ -24,10 +25,10 @@ class TestCase {
                 fail++;
                 out << test_name << " Failed" << endl; 
             }
-            return this;
+            return *this;
         }
 
-        template<typename T> TestCase check_different(T x, T y) {
+        template<typename T> TestCase& check_different(T x, T y) {
             total++;
             if (x != y){
                 pass++;
@@ -37,10 +38,10 @@ class TestCase {
                 fail++;
                 out << test_name << " Failed" << endl;
             }
-            return this;
+            return *this;
         }
 
-        template<typename T> TestCase check_output(T x, string str) {
+        template<typename T> TestCase& check_output(T x, string str) {
             total++;
             string st; 
             st << x;
@@ -52,10 +53,10 @@ class TestCase {
                 fail++;
                 out << test_name << " Failed" << endl;
             }
-            return this;
+            return *this;
         }
 
-        template<typename func, typename T, typename U> TestCase check_function(func f,T t, U u) {
+        template<typename func, typename T, typename U> TestCase& check_function(func f,T t, U u) {
             total++;
             if (f(t) == u){
                 pass++;
@@ -65,7 +66,7 @@ class TestCase {
                 fail++;
                 out << test_name << " Failed" << endl;
             }
-            return this;
+            return *this;
         }
 
 };
