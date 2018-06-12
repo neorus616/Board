@@ -11,10 +11,10 @@ class TestCase {
         ostream &out;
         uint fail, pass, total;
     public:
-        TestCase(string nme, ostream& os): test_name(nme), out(os), fail(0), pass(0), total(0) {}
+        TestCase(string name, ostream& os): test_name(name), out(os), fail(0), pass(0), total(0) {}
 
         void print() {
-            cout << fail << " failed " << pass << " passed " << total  << " total " << endl;
+            cout << test_name << ": " << fail << " failed, " << pass << " passed, " << total  << " total." << endl;
         }
 
         template<typename T> TestCase& check_equal(T x, T y){
@@ -25,7 +25,7 @@ class TestCase {
             }
             else {
                 fail++;
-                out << test_name << ": Failure in test #" << total << " " << x << " should equal" << " " << y << " !" << endl;
+                out << test_name << ": Failure in test #" << total << ": " << x << " should equal" << " " << y << "!" << endl;
             }
             // print();
             return *this;
@@ -39,7 +39,7 @@ class TestCase {
             }
             else {
                 fail++;
-                out << test_name << ": Failure in test #" << total << " " << x << " should not equal" << " " << y << " !" << endl;
+                out << test_name << ": Failure in test #" << total << ": " << x << " should differ than" << " " << y << "!" << endl;
             }
             // print();
             return *this;
@@ -55,7 +55,7 @@ class TestCase {
             }
             else {
                 fail++;
-                out << test_name << ": Failure in test #" << total << " string value should be " << str << " but is " << st.str() << endl;
+                out << test_name << ": Failure in test #" << total << ": string value should be " << str << " but is " << st.str() << endl;
             }
             // print();
             return *this;
@@ -70,7 +70,7 @@ class TestCase {
             }
             else {
                 fail++;
-                out << test_name << ": Failure in test #" << total << " Function should return " << u << " but returned " << res << endl;
+                out << test_name << ": Failure in test #" << total << ": Function should return " << u << " but returned " << res << "!" << endl;
             }
             // print();
             return *this;
