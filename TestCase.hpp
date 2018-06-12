@@ -38,7 +38,7 @@ class TestCase {
             }
             else {
                 fail++;
-                this.out << test_name << ": Failure in test #" << total << " " << x << " should not equal" << " " << y << " !" << endl;
+                out << test_name << ": Failure in test #" << total << " " << x << " should not equal" << " " << y << " !" << endl;
             }
             return *this;
         }
@@ -47,7 +47,7 @@ class TestCase {
             total++;
             stringstream st; 
             st << x;
-            if (str.compare(st.str() == 0){
+            if (str.compare(st.str()) == 0){
                 pass++;
                 // out << test_name << " Passed" << endl;
             }
