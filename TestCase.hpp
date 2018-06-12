@@ -10,9 +10,9 @@ class TestCase {
         uint fail, pass, total;
     public:
         TestCase(string nme, ostream& os): test_name(nme), out(os), fail(0), pass(0), total(0) {}
-         
+
         void print() {
-            out << " Total: " << total << endl << "Passed: " << pass << endl << "Failed: " << fail << endl;
+            cout << " Total: " << total  << " Passed: " << pass  << " Failed: " << fail << endl;
         }
 
         template<typename T> TestCase& check_equal(T x, T y){
