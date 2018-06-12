@@ -14,7 +14,7 @@ class TestCase {
         TestCase(string nme, ostream& os): test_name(nme), out(os), fail(0), pass(0), total(0) {}
 
         void print() {
-            cout << fail << " Failed " << pass << " passed " << total  << " total " << endl;
+            cout << fail << " failed " << pass << " passed " << total  << " total " << endl;
         }
 
         template<typename T> TestCase& check_equal(T x, T y){
@@ -27,7 +27,7 @@ class TestCase {
                 fail++;
                 out << test_name << ": Failure in test #" << total << " " << x << " should equal" << " " << y << " !" << endl;
             }
-            print();
+            // print();
             return *this;
         }
 
@@ -41,7 +41,7 @@ class TestCase {
                 fail++;
                 out << test_name << ": Failure in test #" << total << " " << x << " should not equal" << " " << y << " !" << endl;
             }
-            print();
+            // print();
             return *this;
         }
 
@@ -49,15 +49,15 @@ class TestCase {
             total++;
             stringstream st; 
             st << x;
-            if (str.compare(st.str()) == 0){
+            if (st.str() == str){
                 pass++;
                 // out << test_name << " Passed" << endl;
             }
             else {
                 fail++;
-                out << test_name << ": Failure in test #" << total << " string value should be" << str << " but is " << st.str() << endl;
+                out << test_name << ": Failure in test #" << total << " string value should be " << str << " but is " << st.str() << endl;
             }
-            print();
+            // print();
             return *this;
         }
 
@@ -70,9 +70,9 @@ class TestCase {
             }
             else {
                 fail++;
-                out << test_name << ": Failure in test #" << total << " Function should return" << " " << u << " but returned " << res << endl;
+                out << test_name << ": Failure in test #" << total << " Function should return " << u << " but returned " << res << endl;
             }
-            print();
+            // print();
             return *this;
         }
 
